@@ -6,24 +6,26 @@ using AliacSearchAlgo;
 
 namespace AISearchSample
 {
-    class Fringe2:Fringes
-{       // BFS
-        Queue<Node> s;
-        public Fringe2() 
+    class DepthFirstSearchFringe:Fringes
+    {
+       // DFS
+       // Stack<Node> s;
+        Stack<Node> s;
+        public DepthFirstSearchFringe() 
         {
-            s = new Queue<Node>();
+            s = new Stack<Node>();
         }
         
         public void add(Node n,Node origin)
         {
             n.Origin = origin;
-            s.Enqueue(n);
+            s.Push(n);
         }
 
         public Node remove()
         {
             if (s.Count != 0)
-                 return s.Dequeue();
+                return s.Pop();
             return null;
         }
     }

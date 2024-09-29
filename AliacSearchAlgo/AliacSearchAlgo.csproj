@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fringe2.cs" />
+    <Compile Include="BreadthFirstSearchFringe.cs" />
     <Compile Include="Fringes.cs" />
     <Compile Include="Heuristics.cs" />
     <Compile Include="HillSearch.cs" />
@@ -59,7 +59,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fringe.cs" />
+    <Compile Include="DepthFirstSearchFringe.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
