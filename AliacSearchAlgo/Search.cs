@@ -48,12 +48,10 @@ namespace AISearchSample
             }
 
             Node explorer = null;
-            ArrayList temp;
-            Object []t;
             while ((explorer = fringe.remove()) != null)
             {
               //  MessageBox.Show(explorer.Name+"removed");
-                if (explorer.Goal == true)
+                if (explorer.Goal)
                 {
                     explorer.Expanded = true;
                     MessageBox.Show("found " + explorer.Name);
@@ -62,14 +60,12 @@ namespace AISearchSample
                 }
 
                 //find connections and push to fringe
-                temp = explorer.getNeighbor();
-                t = temp.ToArray();
-                for (int i = 0; i < t.Length; i++)
+                foreach (Node neightbor in explorer.getNeighbor())
                 {
-                    if (((Node)t[i]).Expanded != true)
+                    if (((Node)neightbor).Expanded != true)
                     {
                         //MessageBox.Show(((Node)t[i]).Name + "added");
-                        fringe.add((Node)t[i],explorer);
+                        fringe.add((Node)neightbor, explorer);
                     }
                 }
                 explorer.Expanded = true;
@@ -84,49 +80,44 @@ namespace AISearchSample
 
         public Node searchone()
         {
-            Node explored=null;
+            Node explored = null;
             //pangita Start node
-            if (!start)
+            for (int i = 0; i < n.Count; i++)
             {
-                for (int i = 0; i < n.Count; i++)
+                if (((Node)n[i]).Start == true)
                 {
-                    if (((Node)n[i]).Start == true)
-                    {
-                        fringe.add(((Node)n[i]), null);
-                    }
+                    fringe.add(((Node)n[i]), null);
                 }
-                start = true;
             }
 
             Node explorer = null;
-            ArrayList temp;
-            Object[] t;
-
-            if ((explorer = fringe.remove()) != null)
+            while ((explorer = fringe.remove()) != null)
             {
-                if (explorer.Goal == true)
+                //  MessageBox.Show(explorer.Name+"removed");
+                if (explorer.Goal)
                 {
                     explorer.Expanded = true;
-                    //    MessageBox.Show("found " + explorer.Name);
+                    MessageBox.Show("found " + explorer.Name);
                     explored = explorer;
-
+                    break;
                 }
 
                 //find connections and push to fringe
-                temp = explorer.getNeighbor();
-                t = temp.ToArray();
-                for (int i = 0; i < t.Length; i++)
+                foreach (Node neightbor in explorer.getNeighbor())
                 {
-                    if (((Node)t[i]).Expanded != true)
-                        fringe.add((Node)t[i], explorer);
+                    if (((Node)neightbor).Expanded != true)
+                    {
+                        //MessageBox.Show(((Node)t[i]).Name + "added");
+                        fringe.add((Node)neightbor, explorer);
+                    }
                 }
                 explorer.Expanded = true;
                 explored = explorer;
-            }
-                return explored;
-                
 
-            
+
+            }
+            return explored;
+
         }
 
 
